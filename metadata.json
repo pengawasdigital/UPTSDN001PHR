@@ -1,0 +1,8 @@
+{
+  "name": "Remix Website Sekolah Digital - UPT SD Negeri 001 Perhentian Raja",
+  "description": "Website resmi sekolah modern dan sistem informasi manajemen sekolah terpadu dengan portal publik dan Dashboard Admin profesional.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,326 @@
+{
+  "entities": {
+    "user": {
+      "title": "User",
+      "description": "User profile with role-based access for administrators and operators",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["ADMIN", "OPERATOR"] },
+        "avatarUrl": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "name", "email", "role"]
+    },
+    "schoolProfile": {
+      "title": "SchoolProfile",
+      "description": "Official school profile information and legal identity",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "npsn": { "type": "string" },
+        "nss": { "type": "string" },
+        "status": { "type": "string" },
+        "jenjang": { "type": "string" },
+        "akreditasi": { "type": "string" },
+        "tahunBerdiri": { "type": "string" },
+        "alamat": { "type": "string" },
+        "desaKelurahan": { "type": "string" },
+        "kecamatan": { "type": "string" },
+        "kabupatenKota": { "type": "string" },
+        "provinsi": { "type": "string" },
+        "kodePos": { "type": "string" },
+        "email": { "type": "string" },
+        "telepon": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "website": { "type": "string" },
+        "kepalaSekolah": { "type": "string" },
+        "logo": { "type": "string" },
+        "fotoSekolah": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "sejarah": { "type": "string" }
+      },
+      "required": ["name", "npsn", "alamat", "kepalaSekolah"]
+    },
+    "visionMission": {
+      "title": "VisionMission",
+      "description": "School vision, mission, objectives and values",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "visi": { "type": "string" },
+        "misi": { "type": "array" },
+        "tujuan": { "type": "array" },
+        "nilaiNilai": { "type": "array" },
+        "programUnggulan": { "type": "array" }
+      },
+      "required": ["visi", "misi"]
+    },
+    "principalMessage": {
+      "title": "PrincipalMessage",
+      "description": "Welcome message and address from the school principal",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "foto": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "isiSambutan": { "type": "string" },
+        "periode": { "type": "string" }
+      },
+      "required": ["nama", "isiSambutan"]
+    },
+    "news": {
+      "title": "News",
+      "description": "School news, announcements, and articles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "slug": { "type": "string" },
+        "isi": { "type": "string" },
+        "ringkasan": { "type": "string" },
+        "thumbnail": { "type": "string" },
+        "penulis": { "type": "string" },
+        "kategori": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "status": { "type": "string" },
+        "views": { "type": "number" },
+        "featured": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["judul", "slug", "isi"]
+    },
+    "achievement": {
+      "title": "Achievement",
+      "description": "Student and school awards and achievements",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "namaSiswa": { "type": "string" },
+        "tingkat": { "type": "string" },
+        "cabang": { "type": "string" },
+        "juara": { "type": "string" },
+        "tahun": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "pembina": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "foto": { "type": "string" }
+      },
+      "required": ["nama", "namaSiswa", "juara", "tahun"]
+    },
+    "gallery": {
+      "title": "Gallery",
+      "description": "School media photos and videos",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "judul": { "type": "string" },
+        "kategori": { "type": "string" },
+        "tipe": { "type": "string" },
+        "mediaUrl": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "isPublished": { "type": "boolean" }
+      },
+      "required": ["judul", "mediaUrl"]
+    },
+    "teacherStaff": {
+      "title": "TeacherStaff",
+      "description": "Teacher and educational personnel directory (PTK)",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "nip": { "type": "string" },
+        "nuptk": { "type": "string" },
+        "jenisPTK": { "type": "string" },
+        "jabatan": { "type": "string" },
+        "mataPelajaran": { "type": "string" },
+        "pendidikanTerakhir": { "type": "string" },
+        "statusKepegawaian": { "type": "string" },
+        "foto": { "type": "string" },
+        "email": { "type": "string" },
+        "telepon": { "type": "string" },
+        "tahunMulai": { "type": "string" },
+        "deskripsiSingkat": { "type": "string" }
+      },
+      "required": ["nama", "jenisPTK"]
+    },
+    "student": {
+      "title": "Student",
+      "description": "Student records and enrollment database",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nis": { "type": "string" },
+        "nisn": { "type": "string" },
+        "nama": { "type": "string" },
+        "jenisKelamin": { "type": "string" },
+        "tempatLahir": { "type": "string" },
+        "tanggalLahir": { "type": "string" },
+        "kelas": { "type": "string" },
+        "rombel": { "type": "string" },
+        "tahunMasuk": { "type": "string" },
+        "status": { "type": "string" },
+        "namaOrangTua": { "type": "string" },
+        "teleponOrangTua": { "type": "string" },
+        "alamat": { "type": "string" }
+      },
+      "required": ["nis", "nama", "kelas"]
+    },
+    "facility": {
+      "title": "Facility",
+      "description": "School rooms, labs and facilities",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "kategori": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "jumlah": { "type": "number" },
+        "kondisi": { "type": "string" },
+        "foto": { "type": "string" }
+      },
+      "required": ["nama", "kategori"]
+    },
+    "extracurricular": {
+      "title": "Extracurricular",
+      "description": "Student clubs and extracurricular activities",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "pembina": { "type": "string" },
+        "deskripsi": { "type": "string" },
+        "jadwal": { "type": "string" },
+        "tempat": { "type": "string" },
+        "foto": { "type": "string" },
+        "prestasi": { "type": "string" },
+        "statusAktif": { "type": "boolean" }
+      },
+      "required": ["nama", "pembina"]
+    },
+    "subject": {
+      "title": "Subject",
+      "description": "Curriculum subjects and hours",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "kode": { "type": "string" },
+        "jenjang": { "type": "string" },
+        "kelas": { "type": "string" },
+        "guruPengampu": { "type": "string" },
+        "jumlahJP": { "type": "number" },
+        "deskripsi": { "type": "string" },
+        "statusAktif": { "type": "boolean" }
+      },
+      "required": ["nama", "kode"]
+    },
+    "contactMessage": {
+      "title": "ContactMessage",
+      "description": "Public inquiries and messages from contact form",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "nama": { "type": "string" },
+        "email": { "type": "string" },
+        "telepon": { "type": "string" },
+        "subjek": { "type": "string" },
+        "pesan": { "type": "string" },
+        "tanggal": { "type": "string" },
+        "status": { "type": "string" }
+      },
+      "required": ["nama", "email", "subjek", "pesan"]
+    },
+    "webSettings": {
+      "title": "WebSettings",
+      "description": "Website configuration and metadata",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "namaSekolah": { "type": "string" },
+        "slogan": { "type": "string" },
+        "logo": { "type": "string" },
+        "favicon": { "type": "string" },
+        "alamat": { "type": "string" },
+        "telepon": { "type": "string" },
+        "email": { "type": "string" },
+        "whatsapp": { "type": "string" },
+        "googleMapsUrl": { "type": "string" },
+        "facebookUrl": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "youtubeUrl": { "type": "string" },
+        "tiktokUrl": { "type": "string" },
+        "website": { "type": "string" },
+        "heroBanner": { "type": "string" },
+        "warnaUtama": { "type": "string" },
+        "copyright": { "type": "string" }
+      },
+      "required": ["namaSekolah", "email"]
+    }
+  },
+  "firestore": {
+    "/schoolProfile/{profileId}": {
+      "schema": "schoolProfile",
+      "description": "School identity and profile details"
+    },
+    "/visionMission/{vmId}": {
+      "schema": "visionMission",
+      "description": "Vision, mission and objectives"
+    },
+    "/principalMessage/{pmId}": {
+      "schema": "principalMessage",
+      "description": "Principal welcome message"
+    },
+    "/webSettings/{settingsId}": {
+      "schema": "webSettings",
+      "description": "Website configuration"
+    },
+    "/news/{newsId}": {
+      "schema": "news",
+      "description": "News and announcements"
+    },
+    "/achievements/{achievementId}": {
+      "schema": "achievement",
+      "description": "Student and school achievements"
+    },
+    "/galleries/{galleryId}": {
+      "schema": "gallery",
+      "description": "Media gallery items"
+    },
+    "/teachersStaff/{teacherId}": {
+      "schema": "teacherStaff",
+      "description": "Teachers and staff records"
+    },
+    "/students/{studentId}": {
+      "schema": "student",
+      "description": "Student master database"
+    },
+    "/facilities/{facilityId}": {
+      "schema": "facility",
+      "description": "School facility items"
+    },
+    "/extracurriculars/{extraId}": {
+      "schema": "extracurricular",
+      "description": "Extracurricular activities"
+    },
+    "/subjects/{subjectId}": {
+      "schema": "subject",
+      "description": "Subjects and curriculum"
+    },
+    "/contactMessages/{messageId}": {
+      "schema": "contactMessage",
+      "description": "Visitor contact inquiries"
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User accounts for admin and operator"
+    }
+  }
+}

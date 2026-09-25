@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Connection test collection
+    match /test/{testId} {
+      allow read, write: if isValidId(testId);
+    }
+
+    // School profile and institutional content
+    match /schoolProfile/{profileId} {
+      allow read, write: if isValidId(profileId);
+    }
+
+    match /visionMission/{vmId} {
+      allow read, write: if isValidId(vmId);
+    }
+
+    match /principalMessage/{pmId} {
+      allow read, write: if isValidId(pmId);
+    }
+
+    match /webSettings/{settingsId} {
+      allow read, write: if isValidId(settingsId);
+    }
+
+    match /advantages/{advantageId} {
+      allow read, write: if isValidId(advantageId);
+    }
+
+    match /organizationMembers/{memberId} {
+      allow read, write: if isValidId(memberId);
+    }
+
+    match /news/{newsId} {
+      allow read, write: if isValidId(newsId);
+    }
+
+    match /achievements/{achievementId} {
+      allow read, write: if isValidId(achievementId);
+    }
+
+    match /galleries/{galleryId} {
+      allow read, write: if isValidId(galleryId);
+    }
+
+    match /facilities/{facilityId} {
+      allow read, write: if isValidId(facilityId);
+    }
+
+    match /extracurriculars/{extraId} {
+      allow read, write: if isValidId(extraId);
+    }
+
+    match /teachersStaff/{teacherId} {
+      allow read, write: if isValidId(teacherId);
+    }
+
+    match /subjects/{subjectId} {
+      allow read, write: if isValidId(subjectId);
+    }
+
+    match /students/{studentId} {
+      allow read, write: if isValidId(studentId);
+    }
+
+    match /contactMessages/{messageId} {
+      allow read, write: if isValidId(messageId);
+    }
+
+    match /users/{userId} {
+      allow read, write: if isValidId(userId);
+    }
+  }
+}
+

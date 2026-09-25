@@ -1,0 +1,255 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  OPERATOR
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  role         Role     @default(OPERATOR)
+  avatarUrl    String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SchoolProfile {
+  id            String   @id @default(uuid())
+  name          String
+  npsn          String
+  nss           String
+  status        String
+  jenjang       String
+  akreditasi    String
+  tahunBerdiri  String
+  alamat        String
+  desaKelurahan String
+  kecamatan     String
+  kabupatenKota String
+  provinsi      String
+  kodePos       String
+  email         String
+  telepon       String
+  whatsapp      String
+  website       String
+  kepalaSekolah String
+  logo          String
+  fotoSekolah   String
+  deskripsi     String
+  sejarah       String
+  updatedAt     DateTime @updatedAt
+}
+
+model VisionMission {
+  id              String   @id @default(uuid())
+  visi            String
+  misi            String[]
+  tujuan          String[]
+  nilaiNilai      String[]
+  programUnggulan String[]
+  updatedAt       DateTime @updatedAt
+}
+
+model PrincipalMessage {
+  id          String   @id @default(uuid())
+  nama        String
+  foto        String
+  jabatan     String
+  isiSambutan String
+  periode     String
+  updatedAt   DateTime @updatedAt
+}
+
+model Advantage {
+  id          String   @id @default(uuid())
+  judul       String
+  icon        String
+  deskripsi   String
+  foto        String?
+  urutan      Int      @default(0)
+  statusAktif Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Facility {
+  id        String   @id @default(uuid())
+  nama      String
+  kategori  String
+  deskripsi String
+  jumlah    Int      @default(1)
+  kondisi   String
+  foto      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Extracurricular {
+  id          String   @id @default(uuid())
+  nama        String
+  pembina     String
+  deskripsi   String
+  jadwal      String
+  tempat      String
+  foto        String
+  prestasi    String
+  statusAktif Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OrganizationMember {
+  id             String   @id @default(uuid())
+  jabatan        String
+  nama           String
+  nip            String?
+  nuptk          String?
+  foto           String?
+  urutan         Int      @default(0)
+  kategori       String
+  deskripsiTugas String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model News {
+  id        String   @id @default(uuid())
+  judul     String
+  slug      String   @unique
+  isi       String
+  ringkasan String
+  thumbnail String
+  penulis   String
+  kategori  String
+  tanggal   DateTime
+  status    String   @default("published")
+  views     Int      @default(0)
+  featured  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Achievement {
+  id        String   @id @default(uuid())
+  nama      String
+  namaSiswa String
+  tingkat   String
+  cabang    String
+  juara     String
+  tahun     String
+  tanggal   DateTime
+  pembina   String
+  deskripsi String
+  foto      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Gallery {
+  id          String   @id @default(uuid())
+  judul       String
+  kategori    String
+  tipe        String   @default("foto")
+  mediaUrl    String
+  deskripsi   String
+  tanggal     DateTime
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TeacherStaff {
+  id                 String   @id @default(uuid())
+  nama               String
+  nip                String
+  nuptk              String
+  jenisPTK           String
+  jabatan            String
+  mataPelajaran      String?
+  pendidikanTerakhir String
+  statusKepegawaian  String
+  foto               String
+  email              String
+  telepon            String?
+  tahunMulai         String
+  deskripsiSingkat   String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Subject {
+  id           String   @id @default(uuid())
+  nama         String
+  kode         String
+  jenjang      String
+  kelas        String
+  guruPengampu String
+  jumlahJP     Int
+  deskripsi    String
+  statusAktif  Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Student {
+  id              String   @id @default(uuid())
+  nis             String   @unique
+  nisn            String
+  nama            String
+  jenisKelamin    String
+  tempatLahir     String
+  tanggalLahir    DateTime
+  kelas           String
+  rombel          String
+  tahunMasuk      String
+  status          String   @default("Aktif")
+  foto            String?
+  namaOrangTua    String?
+  teleponOrangTua String?
+  alamat          String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  nama      String
+  email     String
+  telepon   String?
+  subjek    String
+  pesan     String
+  status    String   @default("belum_dibaca")
+  createdAt DateTime @default(now())
+}
+
+model WebSettings {
+  id            String   @id @default(uuid())
+  namaSekolah   String
+  slogan        String
+  logo          String
+  favicon       String
+  alamat        String
+  telepon       String
+  email         String
+  whatsapp      String
+  googleMapsUrl String
+  facebookUrl   String
+  instagramUrl  String
+  youtubeUrl    String
+  tiktokUrl     String
+  website       String
+  heroBanner    String
+  warnaUtama    String
+  copyright     String
+  updatedAt     DateTime @updatedAt
+}
