@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LogIn, Lock, Mail, GraduationCap, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { useToast } from '../../components/common/Toast.tsx';
@@ -17,6 +17,11 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const toast = useToast();
+
+  useEffect(() => {
+    setEmail('');
+    setPassword('');
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,7 +61,7 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4">
         <div className="bg-slate-900 py-8 px-6 shadow-2xl rounded-3xl sm:px-10 border border-slate-800">
-          <form className="space-y-5" onSubmit={handleSubmit}>
+          <form className="space-y-5" onSubmit={handleSubmit} autoComplete="off">
             <div>
               <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
                 Alamat Email
@@ -65,10 +70,13 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
                 <Mail className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="email"
+                  name="user_email_field"
+                  id="user_email_field"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="admin@sekolah.sch.id"
                   required
+                  autoComplete="off"
                   className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
@@ -82,10 +90,13 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
                 <Lock className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
                 <input
                   type="password"
+                  name="user_password_field"
+                  id="user_password_field"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   placeholder="••••••••••••"
                   required
+                  autoComplete="new-password"
                   className="w-full pl-10 pr-4 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white placeholder-slate-500 focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
                 />
               </div>
