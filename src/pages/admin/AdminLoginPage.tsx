@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogIn, Lock, Mail, GraduationCap, ShieldCheck, Info } from 'lucide-react';
+import { LogIn, Lock, Mail, GraduationCap, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext.tsx';
 import { useToast } from '../../components/common/Toast.tsx';
 
@@ -35,16 +35,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
     } finally {
       setLoading(false);
     }
-  };
-
-  const fillDefaultAdmin = () => {
-    setEmail('digitalpengawas@gmail.com');
-    setPassword('Asyiella01@');
-  };
-
-  const fillDefaultOperator = () => {
-    setEmail('basoekyphr25@gmail.com');
-    setPassword('Asyiella01@');
   };
 
   return (
@@ -119,39 +109,6 @@ export const AdminLoginPage: React.FC<AdminLoginPageProps> = ({
               )}
             </button>
           </form>
-
-          {/* Development Quick Credentials */}
-          <div className="mt-6 pt-6 border-t border-slate-800/80 space-y-3">
-            <div className="flex items-center gap-2 text-xs text-amber-400 font-semibold">
-              <Info className="w-4 h-4 shrink-0" />
-              <span>Akun Uji Coba Default (Development):</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <button
-                type="button"
-                onClick={fillDefaultAdmin}
-                className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-emerald-500/50 text-left transition-colors cursor-pointer group"
-              >
-                <p className="font-bold text-emerald-400 group-hover:text-emerald-300">
-                  Role Administrator
-                </p>
-                <p className="text-[10px] text-slate-400 truncate mt-0.5">digitalpengawas@gmail.com</p>
-                <span className="text-[9px] text-slate-500 block mt-1">Akses Penuh Semua Menu</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={fillDefaultOperator}
-                className="p-2.5 rounded-xl bg-slate-950 border border-slate-800 hover:border-sky-500/50 text-left transition-colors cursor-pointer group"
-              >
-                <p className="font-bold text-sky-400 group-hover:text-sky-300">
-                  Role Operator
-                </p>
-                <p className="text-[10px] text-slate-400 truncate mt-0.5">basoekyphr25@gmail.com</p>
-                <span className="text-[9px] text-slate-500 block mt-1">Kelola Konten & Data</span>
-              </button>
-            </div>
-          </div>
 
           <div className="mt-6 text-center">
             <button
